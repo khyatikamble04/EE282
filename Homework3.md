@@ -7,14 +7,14 @@ I downloaded the *Drosophila melanogaster* genome assembly gzipped FASTA file fr
 ` drosophila_genome=https://flybase.org/genomes/\
 Drosophila_melanogaster/dmel_r6.66_FB2025_05/fasta/\
 dmel-all-chromosome-r6.66.fasta.gz \
-$wget $drosophila_genome -O FlyBase_r6-66_chr.fasta.gz `
+wget $drosophila_genome -O FlyBase_r6-66_chr.fasta.gz `
 
 ### File Integrity
 In order to make sure that we will be analyzing what we want to analyze, we will run a checksum to ensure that the file is not corrupted.
 
 `$checksum=https://flybase.org/genomes/Drosophila_melanogaster/dmel_r6.66_FB2025_05/fasta/md5sum.txt\
-$wget $checksum\
-$grep 'dmel-all-chromosome-r6.66.fasta.gz' md5sum.txt | md5sum -c`
+wget $checksum\
+grep 'dmel-all-chromosome-r6.66.fasta.gz' md5sum.txt | md5sum -c`
 
 The md5sum returned the following 40 digit hexadecimal value: **ea600dbb86f1779463f69082131753cd**
 ### Calculating Genome Assembly Statistics
@@ -38,18 +38,18 @@ Total number of sequences: 1870
 ## Annotation File Summary
 Similar to the files above, I downloaded the *Drosophila melanogaster* annotation gzipped GTF file from FlyBase (release 6.66) and contained all chromosomes. The downloaded file had the name " dmel-all-r6.66.gz ".
 
-`$wget https://flybase.org/genomes/Drosophila_melanogaster/dmel_r6.66_FB2025_05/gtf/dmel-all-r6.66.gtf.gz
+`wget https://flybase.org/genomes/Drosophila_melanogaster/dmel_r6.66_FB2025_05/gtf/dmel-all-r6.66.gtf.gz
 `
 ### File Integrity
 Likewise, we will doublecheck the md5sum of this.
 
-`$wget https://s3ftp.flybase.org/genomes/Drosophila_melanogaster/dmel_r6.66_FB2025_05/gtf/md5sum.txt -O gtf_md5sum.txt\
-$md5sum -c gtf_md5sum.txt`
+`wget https://s3ftp.flybase.org/genomes/Drosophila_melanogaster/dmel_r6.66_FB2025_05/gtf/md5sum.txt -O gtf_md5sum.txt\
+md5sum -c gtf_md5sum.txt`
 
 ### The Total Number of Features of Each Type
 Annotations provide us a lot of information about the type of features found in genomes. The following is a way to understand the total number of features of each type, sorted from most to least common.
 
-`$bioawk -c gff '{print $feature}' dmel-all-r6.66.gtf.gz | sort | uniq -c | sort -nr`
+`bioawk -c gff '{print $feature}' dmel-all-r6.66.gtf.gz | sort | uniq -c | sort -nr`
 
 **Remember to activate mamba for this command**
 `mamba activate ee282`
@@ -76,7 +76,7 @@ Annotations provide us a lot of information about the type of features found in 
 ### The Total Number of Genes per Chromosome Arm
 Identifying the number of genes in each arm of a chromosome can provide useful information. To do this, execute the following command.
 
-`$bioawk -c gff '$feature == "gene" && $seqname ~ /^(X|Y|2L|2R|3L|3R|4)$/ {print $seqname}' dmel-all-r6.66.gtf.gz | sort | uniq -c`
+`bioawk -c gff '$feature == "gene" && $seqname ~ /^(X|Y|2L|2R|3L|3R|4)$/ {print $seqname}' dmel-all-r6.66.gtf.gz | sort | uniq -c`
 
 #### Outcome
    3508 2L
