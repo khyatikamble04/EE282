@@ -1,6 +1,6 @@
 # Analysis Proposal
 
-**Khyati Kamble**
+## Khyati Kamble
 
 ### Introduction
 
@@ -17,7 +17,7 @@ First, I will determine which genera in the community data was recovered via cul
 
 After the setup of the data, I can use this table to answer my research questions. In order to test whether relative abundance predicts culturability of a genus, I will use R to calculate each genus' relative abundance as a share of all sequence counts across the 14 samples. To compare the uncultured and cultured genera, I will use a Wilcox rank-sum test in R, which does not assume a normal distribution and suits a small cultured group, and fit a Firth logistic regression with the logistf package, which is designed for rare outcomes like my roughly 12 cultured genera. I will also calculate the the percentage of community sequences that the cultured genera account for. To test whether cultured genera cluster on the tree, I will select the most abundant sequence from each genus in R and extract it with seqkit in bash, then align these with MAFFT (Katoh and Standley 2013) and build a tree with FastTree (Price et al. 2010). In R, I will use the ape and picante packages to measure the mean pairwise phylogenetic distance among the cultured genera and compare it with 1,000 random sets of the same size drawn from all 638 genera. Cultured genera that are more closely related than nearly all random sets would indicate clustering.
 
-#Visualization
+### Visualization
 
 I imagine the final project to contain approximately four or five figures to describe the results. These visualizations will mostly be done using R, but some Adobe Illustrator will be used to make the figures "prettier". To answer whether relative abundance predicts culturability, I will make a rank-abundance plot that has the cultured genera highlighted to show where they fall from most to the least abundant. I also will make a boxplot comparing the relative abundances of the cultured and uncultured genera on a log scale, since a few genera may be far more abundant than the rest. If abundance predicts culturability, then cultured genera should have a higher median in the boxplot. To answer whether the cultured strains are clustered phylogenetically, I will make a phylogenetic tree of all the genera with the cultured genera highlighted, showing whether they group together or scatter across the tree. A histogram of the mean pairwise distance from the 1,000 random sets, with the observed value for the cultured genera marked as a vertical line, will show how unusual that observed value is. Finally, I will plot the number of cultured genera at each identity cutoff (95%, 97%, and 99%) to show how sensitive the results are to that choice.
 
