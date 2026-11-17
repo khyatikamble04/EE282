@@ -12,7 +12,7 @@ wget $drosophila_genome -O FlyBase_r6-66_chr.fasta.gz `
 ### File Integrity
 In order to make sure that we will be analyzing what we want to analyze, we will run a checksum to ensure that the file is not corrupted.
 
-`$checksum=https://flybase.org/genomes/Drosophila_melanogaster/dmel_r6.66_FB2025_05/fasta/md5sum.txt\
+`checksum=https://flybase.org/genomes/Drosophila_melanogaster/dmel_r6.66_FB2025_05/fasta/md5sum.txt\
 wget $checksum\
 grep 'dmel-all-chromosome-r6.66.fasta.gz' md5sum.txt | md5sum -c`
 
