@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env/bash
 
 # Homework 3: Drosophila melanogaster genome assembly using data from FlyBase release 6.66
 
