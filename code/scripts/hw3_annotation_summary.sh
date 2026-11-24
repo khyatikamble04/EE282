@@ -5,7 +5,7 @@
 # working in the Flybase directory and activate mamba
 mkdir -p ~/FlyBase
 cd ~/FlyBase
-mamba activate ee282
+
 
 # downloading the gtf annotation file
 base=https://s3ftp.flybase.org/genomes/Drosophila_melanogaster/dmel_r6.66_FB2025_05/gtf
