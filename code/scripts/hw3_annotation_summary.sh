@@ -9,13 +9,13 @@ cd ~/FlyBase
 
 # downloading the gtf annotation file
 base=https://s3ftp.flybase.org/genomes/Drosophila_melanogaster/dmel_r6.66_FB2025_05/gtf
-wget "$base/dmel-all-r6.66.gtf.gz"
+wget "$base/dmel-all-r6.66.gtf.gz" -O dmel-all-r6.66.gtf.gz
 
 # downloading the official checksum file for gtf
-wget "$base/md5sum.txt"
+wget "$base/md5sum.txt" -O gtf_md5sum.txt
 
 #verifying file integrity
-grep "dmel-all-r6.66.gtf.gz" md5sum.txt > gtf_md5sum.txt
+grep "dmel-all-r6.66.gtf.gz" gtf_md5sum.txt | md5sum -c
 md5sum -c gtf_md5sum.txt
 
 # counting the total number of features of each type, from most to least common
